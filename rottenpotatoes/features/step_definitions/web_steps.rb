@@ -137,7 +137,7 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   end
 end
 
-Then("I should not see movies rated: {string}") do |text|
+Then("I should not see movies rated: {string}") do |text| # Chai fixed this
   if page.respond_to? :should
     page.should have_no_content(text)
   else
@@ -167,15 +167,11 @@ Then("I should not see movies rated: {string}") do |regexp|
   end
 end
 
-Then("I should not see movies rated: {string}") do |ratings|
+Then("I should not see movies rated: {string}") do |ratings| #Chai fixed this 
   ratings.split(", ").each do |rating|
     expect(page).to have_no_content("#{rating}")
   end
 end
-
-
-
-
 
 
 Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
@@ -292,3 +288,5 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+
